@@ -49,7 +49,9 @@ const ImportExportTable = () => {
     const csv = Papa.unparse(data);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     setFileData(blob);
+    saveAs(blob, 'data_export.csv');
   };
+  
 
   const exportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(data);
