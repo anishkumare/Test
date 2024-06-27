@@ -69,6 +69,22 @@ const ImportExportTable = () => {
     }
   };
 
+  const sendToBackend = () => {
+    fetch('your-backend-endpoint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      console.log('Response from backend:', response);
+    })
+    .catch(error => {
+      console.error('Error sending data to backend:', error);
+    });
+  };
+
   useEffect(() => {
     fetchDataFromAPI();
   }, []);
@@ -94,6 +110,7 @@ const ImportExportTable = () => {
           <button onClick={exportToExcel} className="export-button">Export to Excel</button>
         </div>
         <button onClick={downloadFile} className="download-button">Download</button>
+        <button onClick={sendToBackend} className="send-button">Send to Backend</button>
       </div>
       <table className="data-table">
         <thead>
